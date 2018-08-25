@@ -14,6 +14,7 @@ namespace RunGame
         public GameCatch()
         {
             gamers = new List<Игрок>();
+            leader = null;
         }
 
         public void AddGamer(Игрок gamer)
@@ -24,7 +25,13 @@ namespace RunGame
 
         private void SetNewLeader(Игрок gamer)
         {
-            throw new NotImplementedException();
+            if (leader != null)
+            {
+                leader.НеГоля();
+            }
+
+            leader = gamer;
+            leader.Голя();
         }
 
         public void Step()
@@ -35,7 +42,19 @@ namespace RunGame
 
         private void FindNewLeader()
         {
-            throw new NotImplementedException();
+            if (leader == null)
+            {
+                return;
+            }
+
+            foreach (Игрок item in gamers)
+            {
+                if (leader.Поймал(item))
+                {
+                    SetNewLeader(item);
+                    break;
+                }
+            }
         }
 
         private void RunAll()
