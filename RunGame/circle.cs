@@ -14,5 +14,7 @@ namespace RunGame
             this.radius = radius;
             color = Color.Blue;
         }
+
+
     }
 }
