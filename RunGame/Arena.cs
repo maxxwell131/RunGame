@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RunGame
@@ -28,6 +24,28 @@ namespace RunGame
         private void Clear()
         {
             graphics.Clear(picture.BackColor);
+        }
+
+        public void Show(Circle circle)
+        {
+            Pen pen = new Pen(circle.color);
+            graphics.DrawEllipse(pen, circle.center.X - circle.radius,
+                circle.center.Y - circle.radius,
+                circle.center.X + circle.radius,
+                circle.center.Y + circle.radius);
+        }
+
+        public void Refresh()
+        {
+            picture.Refresh();
+        }
+
+        static public Circle NewCircle()
+        {
+            int r = random.Next(Range.Width / 50, Range.Width / 20);
+            int x = random.Next( r, Range.Width - r);
+            int y = random.Next( r, Range.Height - r);
+            return new Circle( x, y, r);
         }
     }
 }
