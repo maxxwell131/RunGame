@@ -5,6 +5,6 @@
         void Беги();
         void Голя();
         void НеГоля();
-        bool Поймал(object obj);
+        bool Поймал(Игрок obj);
     }
 }
