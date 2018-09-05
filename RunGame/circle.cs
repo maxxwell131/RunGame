@@ -35,8 +35,9 @@ namespace RunGame
 
             if (y < radius || y > Arena.Range.Height - radius)
             {
-                center = new Point(center.X + sx, center.Y + sy);
+                sy = -sy;
             }
+            center = new Point(center.X + sx, center.Y + sy);
         }
 
         public void Голя()

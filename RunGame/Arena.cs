@@ -21,7 +21,7 @@ namespace RunGame
             Clear();
         }
 
-        private void Clear()
+        public void Clear()
         {
             graphics.Clear(picture.BackColor);
         }
@@ -45,7 +45,9 @@ namespace RunGame
             int r = random.Next(Range.Width / 50, Range.Width / 20);
             int x = random.Next( r, Range.Width - r);
             int y = random.Next( r, Range.Height - r);
-            return new Circle( x, y, r);
+            int sx = random.Next( -5, +6);
+            int sy = random.Next( -5, +6);
+            return new Circle( x, y, r, sx, sy);
         }
     }
 }

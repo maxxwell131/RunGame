@@ -45,11 +45,14 @@ namespace RunGame
 
             foreach (Игрок item in gamers)
             {
-                if (leader.Поймал(item))
+                if (!leader.Equals(item))
                 {
-                    SetNewLeader(item);
-                    break;
-                }
+                    if (leader.Поймал(item))
+                    {
+                        SetNewLeader(item);
+                        break;
+                    }
+                }               
             }
         }
 
