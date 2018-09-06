@@ -6,6 +6,8 @@ namespace RunGame
     {
        public List<Игрок> gamers { get; private set; }
         Игрок leader;
+        int leaderSkipSteps;
+        static int MaxSkipStep = 10;
 
         public GameCatch()
         {
@@ -28,6 +30,7 @@ namespace RunGame
 
             leader = gamer;
             leader.Голя();
+            leaderSkipSteps = MaxSkipStep;
         }
 
         public void Step()
@@ -40,6 +43,13 @@ namespace RunGame
         {
             if (leader == null)
             {
+                return;
+            }
+
+            //чтоб новый голя не передал старому голе латку
+            if (leaderSkipSteps > 0)
+            {
+                leaderSkipSteps--;
                 return;
             }
 
@@ -60,7 +70,9 @@ namespace RunGame
         {
             foreach (Игрок item in gamers)
             {
-                item.Беги();
+                // если лидер -стой, остальные беги
+                if (!leader.Equals(item) || leaderSkipSteps == 0)
+                    item.Беги();
             }
         }
     }
