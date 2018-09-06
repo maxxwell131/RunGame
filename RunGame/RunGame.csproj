@@ -57,6 +57,7 @@
       <DependentUpon>FormGame.cs</DependentUpon>
     </Compile>
     <Compile Include="GameCatch.cs" />
+    <Compile Include="GameVirus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Игрок.cs" />
